@@ -1,0 +1,35 @@
+{
+  "entities": {
+    "CarRecord": {
+      "title": "Car Record",
+      "description": "A record of car numbers associated with an apartment unit.",
+      "type": "object",
+      "properties": {
+        "aptNo": {
+          "type": "string",
+          "description": "The apartment unit number (e.g., 101)."
+        },
+        "mainNo": {
+          "type": "string",
+          "description": "Primary car number."
+        },
+        "subNo": {
+          "type": "string",
+          "description": "Secondary car number or special label (e.g., TABLE, PROCEDURE)."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      },
+      "required": ["aptNo", "mainNo"]
+    }
+  },
+  "firestore": {
+    "/cars/{aptNo}": {
+      "schema": "CarRecord",
+      "description": "Collection of car records indexed by apartment number."
+    }
+  }
+}

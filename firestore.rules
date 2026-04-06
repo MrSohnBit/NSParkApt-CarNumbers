@@ -1,0 +1,52 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: cars
+    // Document ID: aptNo (string)
+    // Fields:
+    //   - aptNo: string (required) - Apartment unit number
+    //   - mainNo: string (required) - Primary car number
+    //   - subNo: string (optional) - Secondary car number or label
+    //   - updatedAt: timestamp (required) - Last update time
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.email == "mrsohnokpos@gmail.com" && 
+        request.auth.token.email_verified == true
+      );
+    }
+
+    function isValidCarRecord(data) {
+      return data.keys().hasAll(['aptNo', 'mainNo', 'updatedAt']) &&
+             data.aptNo is string && data.aptNo.size() > 0 && data.aptNo.size() <= 20 &&
+             data.mainNo is string && data.mainNo.size() <= 20 &&
+             (data.subNo == null || (data.subNo is string && data.subNo.size() <= 20)) &&
+             data.updatedAt is timestamp;
+    }
+
+    match /cars/{aptNo} {
+      // Public search access
+      allow read: if true;
+      
+      // Admin only write access
+      allow create: if isAdmin() && isValidCarRecord(request.resource.data);
+      allow update: if isAdmin() && isValidCarRecord(request.resource.data);
+      allow delete: if isAdmin();
+    }
+  }
+}
