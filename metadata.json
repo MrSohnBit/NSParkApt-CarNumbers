@@ -1,5 +1,6 @@
 {
-  "name": "NS Park Apartment Car Management",
-  "description": "A car number search and management system for NS Park Apartment residents.",
-  "requestFramePermissions": []
+  "name": "NS파크 아파트 주차관리",
+  "description": "NS파크 아파트 주차관리",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
 }
