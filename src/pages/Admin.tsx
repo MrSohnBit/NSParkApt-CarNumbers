@@ -194,29 +194,37 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
 
       {/* Search Section */}
       <section className="space-y-6">
-        <div className="relative group">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" size={24} />
-          <input 
-            type="text"
-            placeholder="호수 또는 차량번호를 입력하세요..."
-            className="w-full pl-14 pr-4 py-5 bg-white border border-slate-200 rounded-2xl shadow-sm focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none text-lg font-medium"
-            value={searchQuery}
-            onChange={e => setSearchQuery(e.target.value)}
-          />
-        </div>
+        <div className="sticky top-[73px] z-20 py-4 -mx-4 px-4 bg-slate-50 md:rounded-2xl md:mx-0 md:px-0">
+          <div className="relative group mb-4">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" size={24} />
+            <input 
+              type="text"
+              placeholder="호수 또는 차량번호를 입력하세요..."
+              className="w-full pl-14 pr-4 py-5 bg-white border border-slate-200 rounded-2xl shadow-sm focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none text-lg font-medium"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+            />
+          </div>
 
-        {/* Results Table */}
-        <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-          <div className="overflow-x-auto">
+          {/* Results Table Header (Sticky) */}
+          <div className="bg-white rounded-t-2xl border-x border-t border-slate-200 overflow-hidden shadow-sm uppercase tracking-wider">
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">호수</th>
-                  <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">차량번호 1</th>
-                  <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">차량번호 2 / 메모</th>
-                  <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">관리</th>
+                  <th className="px-6 py-4 text-xs font-bold text-slate-500 w-[15%]">호수</th>
+                  <th className="px-6 py-4 text-xs font-bold text-slate-500 w-[30%]">차량번호 1</th>
+                  <th className="px-6 py-4 text-xs font-bold text-slate-500 w-[35%]">차량번호 2 / 메모</th>
+                  <th className="px-6 py-4 text-xs font-bold text-slate-500 w-[20%] text-right">관리</th>
                 </tr>
               </thead>
+            </table>
+          </div>
+        </div>
+
+        {/* Results Table Body (Scrollable) */}
+        <div className="bg-white rounded-b-2xl border-x border-b border-slate-200 overflow-hidden shadow-sm -mt-6">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
               <tbody className="divide-y divide-slate-100">
                 {filteredRecords.length > 0 ? (
                   filteredRecords.map((record) => (
@@ -225,7 +233,7 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
                       key={record.aptNo}
                       className="hover:bg-slate-50/50 transition-colors group"
                     >
-                      <td className="px-6 py-4 font-bold text-slate-700">
+                      <td className="px-6 py-4 font-bold text-slate-700 w-[15%]">
                         <button 
                           onClick={() => handleEdit(record)}
                           className="hover:text-blue-600 hover:underline transition-colors"
@@ -233,7 +241,7 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
                           {record.aptNo}
                         </button>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 w-[30%]">
                         <div className="flex items-center gap-2">
                           {record.mainNo}
                           {record.isSuv1 && (
@@ -241,7 +249,7 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
                           )}
                         </div>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 w-[35%]">
                         <div className="flex items-center gap-2">
                           {record.subNo}
                           {record.isSuv2 && (
@@ -249,7 +257,7 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
                           )}
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-right">
+                      <td className="px-6 py-4 text-right w-[20%]">
                         <div className="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                           <button 
                             onClick={() => handleEdit(record)}

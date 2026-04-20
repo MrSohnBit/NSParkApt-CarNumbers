@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Car, LogOut, LogIn, ShieldCheck } from 'lucide-react';
+import { Car, LogOut, ShieldCheck } from 'lucide-react';
 import { User, signOut, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../firebase';
 
@@ -50,7 +50,7 @@ export default function Layout({ children, user, isAdmin }: LayoutProps) {
             <nav className="hidden md:flex items-center gap-4 text-sm font-medium">
               <Link 
                 to="/" 
-                className={`transition-colors ${location.pathname === '/' ? 'text-blue-600' : 'text-slate-500 hover:text-slate-800'}`}
+                className="text-transparent"
               >
                 검색
               </Link>
@@ -67,7 +67,7 @@ export default function Layout({ children, user, isAdmin }: LayoutProps) {
             <div className="h-6 w-px bg-slate-200 hidden md:block"></div>
 
             <div className="flex items-center gap-2">
-              {user ? (
+              {user && (
                 <div className="flex items-center gap-3">
                   {isAdmin && (
                     <span className="hidden md:flex items-center gap-1 text-xs font-medium bg-blue-100 text-blue-700 px-2 py-1 rounded-full">
@@ -82,14 +82,6 @@ export default function Layout({ children, user, isAdmin }: LayoutProps) {
                     <LogOut size={20} />
                   </button>
                 </div>
-              ) : (
-                <button 
-                  onClick={login}
-                  className="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors"
-                >
-                  <LogIn size={18} />
-                  <span>관리자 로그인</span>
-                </button>
               )}
             </div>
           </div>
@@ -101,9 +93,11 @@ export default function Layout({ children, user, isAdmin }: LayoutProps) {
       </main>
 
       {/* Footer */}
-      <footer className="max-w-4xl mx-auto px-4 py-12 text-center text-slate-400 text-xs">
-        <p>© 2026 NS Park Apartment Management System</p>
-        <p className="mt-1">Powered by Google AI Studio & Firebase</p>
+      <footer 
+        onDoubleClick={user ? undefined : login} 
+        className="max-w-4xl mx-auto px-4 py-12 text-center text-slate-400 text-xs select-none cursor-default"
+      >
+        <p>© 2026 NS Park APT 주차장 관리</p>
       </footer>
     </div>
   );

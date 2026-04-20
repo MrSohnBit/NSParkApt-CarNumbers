@@ -47,28 +47,36 @@ export default function Home({ records }: HomeProps) {
     <div className="space-y-8">
       {/* Search Section */}
       <section className="space-y-6">
-        <div className="relative group">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" size={24} />
-          <input 
-            type="text"
-            placeholder="호수 또는 차량번호를 입력하세요..."
-            className="w-full pl-14 pr-4 py-5 bg-white border border-slate-200 rounded-2xl shadow-sm focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none text-lg font-medium"
-            value={searchQuery}
-            onChange={e => setSearchQuery(e.target.value)}
-          />
-        </div>
+        <div className="sticky top-[73px] z-20 py-4 -mx-4 px-4 bg-slate-50 md:rounded-2xl md:mx-0 md:px-0">
+          <div className="relative group mb-4">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" size={24} />
+            <input 
+              type="text"
+              placeholder="호수 또는 차량번호를 입력하세요..."
+              className="w-full pl-14 pr-4 py-5 bg-white border border-slate-200 rounded-2xl shadow-sm focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none text-lg font-medium"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+            />
+          </div>
 
-        {/* Results Table */}
-        <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-          <div className="overflow-x-auto">
+          {/* Results Table Header (Sticky) */}
+          <div className="bg-white rounded-t-2xl border-x border-t border-slate-200 overflow-hidden shadow-sm">
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">호수</th>
-                  <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">차량번호 1</th>
-                  <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">차량번호 2 / 메모</th>
+                  <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider w-[20%]">호수</th>
+                  <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider w-[40%]">차량번호 1</th>
+                  <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider w-[40%]">차량번호 2</th>
                 </tr>
               </thead>
+            </table>
+          </div>
+        </div>
+
+        {/* Results Table Body (Scrollable) */}
+        <div className="bg-white rounded-b-2xl border-x border-b border-slate-200 overflow-hidden shadow-sm -mt-6">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
               <tbody className="divide-y divide-slate-100">
                 {filteredRecords.length > 0 ? (
                   filteredRecords.map((record) => (
@@ -81,10 +89,10 @@ export default function Home({ records }: HomeProps) {
                         "hover:bg-slate-50/50"
                       }`}
                     >
-                      <td className="px-6 py-4 font-bold text-slate-700">
+                      <td className="px-6 py-4 font-bold text-slate-700 w-[20%]">
                         {highlightText(record.aptNo, searchQuery)}
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 w-[40%]">
                         <div className="flex items-center gap-2">
                           {highlightText(record.mainNo, searchQuery)}
                           {record.isSuv1 && (
@@ -92,7 +100,7 @@ export default function Home({ records }: HomeProps) {
                           )}
                         </div>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 w-[40%]">
                         <div className="flex items-center gap-2">
                           {highlightText(record.subNo, searchQuery)}
                           {record.isSuv2 && (
@@ -134,7 +142,7 @@ export default function Home({ records }: HomeProps) {
                 벽쪽 : 지하상가 전용주차장
               </p>
               <p className="text-slate-600 pl-4 underline decoration-blue-200 underline-offset-4">
-                지하 상가 운영 안함. 입주민 임시로 이용 가능
+                지하 상가 운영 안함. 입주민 임시로만 이용 가능. 6시간 이상 주차 불가 
               </p>
             </div>
 
