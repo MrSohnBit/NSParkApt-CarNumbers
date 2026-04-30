@@ -211,10 +211,10 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="px-6 py-4 text-[10px] md:text-xs font-bold text-slate-500 w-[15%]">호수</th>
-                  <th className="px-6 py-4 text-[10px] md:text-xs font-bold text-slate-500 w-[30%]">차량번호 1</th>
-                  <th className="px-6 py-4 text-[10px] md:text-xs font-bold text-slate-500 w-[35%]">차량번호 2 / 메모</th>
-                  <th className="px-6 py-4 text-[10px] md:text-xs font-bold text-slate-500 w-[20%] text-right">관리</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4 text-[10px] md:text-xs font-bold text-slate-500 w-[15%]">호수</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4 text-[10px] md:text-xs font-bold text-slate-500 w-[30%]">차량번호 1</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4 text-[10px] md:text-xs font-bold text-slate-500 w-[35%]">차량번호 2 / 메모</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4 text-[10px] md:text-xs font-bold text-slate-500 w-[20%] text-right">관리</th>
                 </tr>
               </thead>
             </table>
@@ -233,7 +233,7 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
                       key={record.aptNo}
                       className="hover:bg-slate-50/50 transition-colors group"
                     >
-                      <td className="px-6 py-4 font-bold text-sm md:text-base text-slate-700 w-[15%]">
+                      <td className="px-3 py-2 md:px-6 md:py-4 font-bold text-sm md:text-base text-slate-700 w-[15%]">
                         <button 
                           onClick={() => handleEdit(record)}
                           className="hover:text-blue-600 hover:underline transition-colors"
@@ -241,7 +241,7 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
                           {record.aptNo}
                         </button>
                       </td>
-                      <td className="px-6 py-4 w-[30%] text-sm md:text-base">
+                      <td className="px-3 py-2 md:px-6 md:py-4 w-[30%] text-sm md:text-base">
                         <div className="flex items-center gap-2">
                           <div className="relative inline-flex items-center">
                             {record.isSuv1 && (
@@ -251,7 +251,7 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 w-[35%] text-sm md:text-base">
+                      <td className="px-3 py-2 md:px-6 md:py-4 w-[35%] text-sm md:text-base">
                         <div className="flex items-center gap-2">
                           <div className="relative inline-flex items-center">
                             {record.isSuv2 && (
@@ -261,7 +261,7 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-right w-[20%] text-sm md:text-base">
+                      <td className="px-3 py-2 md:px-6 md:py-4 text-right w-[20%] text-sm md:text-base">
                         <div className="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                           <button 
                             onClick={() => handleEdit(record)}
@@ -281,7 +281,7 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={4} className="px-6 py-12 text-center text-slate-400 italic">
+                    <td colSpan={4} className="px-3 py-6 md:px-6 md:py-12 text-center text-slate-400 italic">
                       검색 결과가 없습니다.
                     </td>
                   </tr>

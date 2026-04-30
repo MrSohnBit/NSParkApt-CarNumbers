@@ -64,9 +64,9 @@ export default function Home({ records }: HomeProps) {
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="px-6 py-4 text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-wider w-[20%]">호수</th>
-                  <th className="px-6 py-4 text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-wider w-[40%]">차량번호 1</th>
-                  <th className="px-6 py-4 text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-wider w-[40%]">차량번호 2</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4 text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-wider w-[20%]">호수</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4 text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-wider w-[40%]">차량번호 1</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4 text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-wider w-[40%]">차량번호 2</th>
                 </tr>
               </thead>
             </table>
@@ -89,10 +89,10 @@ export default function Home({ records }: HomeProps) {
                         "hover:bg-slate-50/50"
                       }`}
                     >
-                      <td className="px-6 py-4 font-bold text-sm md:text-base text-slate-700 w-[20%]">
+                      <td className="px-3 py-2 md:px-6 md:py-4 font-bold text-sm md:text-base text-slate-700 w-[20%]">
                         {highlightText(record.aptNo, searchQuery)}
                       </td>
-                      <td className="px-6 py-4 w-[40%] text-sm md:text-base">
+                      <td className="px-3 py-2 md:px-6 md:py-4 w-[40%] text-sm md:text-base">
                         <div className="flex items-center gap-2">
                           <div className="relative inline-flex items-center">
                             {record.isSuv1 && (
@@ -102,7 +102,7 @@ export default function Home({ records }: HomeProps) {
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 w-[40%] text-sm md:text-base">
+                      <td className="px-3 py-2 md:px-6 md:py-4 w-[40%] text-sm md:text-base">
                         <div className="flex items-center gap-2">
                           <div className="relative inline-flex items-center">
                             {record.isSuv2 && (
@@ -116,7 +116,7 @@ export default function Home({ records }: HomeProps) {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={3} className="px-6 py-12 text-center text-slate-400 italic">
+                    <td colSpan={3} className="px-3 py-6 md:px-6 md:py-12 text-center text-slate-400 italic">
                       검색 결과가 없습니다.
                     </td>
                   </tr>
@@ -128,59 +128,65 @@ export default function Home({ records }: HomeProps) {
       </section>
 
       {/* Info Section */}
-      <section className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm space-y-6">
+      <section className="bg-white rounded-2xl p-4 md:p-8 border border-slate-200 shadow-sm space-y-4 md:space-y-6">
         <div className="space-y-2">
-          <p className="text-base md:text-lg font-bold text-slate-800">- 주차는 세대당 1대만 가능</p>
+          <p className="text-sm md:text-lg font-bold text-slate-800">- 주차는 세대당 1대만 가능</p>
         </div>
 
-        <div className="space-y-4">
-          <h3 className="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2">
-            <Info className="text-blue-600" size={24} />
+        <div className="space-y-3 md:space-y-4">
+          <h3 className="text-base md:text-xl font-bold text-slate-900 flex items-center gap-2">
+            <Info className="text-blue-600 shrink-0" size={20} />
             기계식 주차장 외부 1층 주차장 이용 안내
           </h3>
           
-          <div className="grid grid-cols-1 gap-6">
-            <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
-              <p className="text-base md:text-lg font-bold text-slate-800 mb-2 flex items-center gap-2">
-                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+          <div className="grid grid-cols-1 gap-4 md:gap-6">
+            <div className="bg-slate-50 p-3 md:p-5 rounded-xl border border-slate-100">
+              <p className="text-sm md:text-lg font-bold text-slate-800 mb-1 md:mb-2 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
                 벽쪽 : 지하상가 전용주차장
               </p>
-              <p className="text-sm md:text-base text-slate-600 pl-4 underline decoration-blue-200 underline-offset-4">
+              <p className="text-xs md:text-base text-slate-600 pl-3.5 underline decoration-blue-200 underline-offset-4">
                 지하 상가 운영 안함. 입주민 임시로 이용 가능
               </p>
             </div>
 
-            <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
-              <p className="text-base md:text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+            <div className="bg-slate-50 p-3 md:p-5 rounded-xl border border-slate-100">
+              <p className="text-sm md:text-lg font-bold text-slate-800 mb-2 md:mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
                 가운데 (당근슈퍼 전용 주차장)
               </p>
-              <ul className="space-y-3 pl-4 text-sm md:text-base">
+              <ul className="space-y-2 md:space-y-3 pl-3.5 text-xs md:text-base">
                 <li className="flex items-center gap-2">
-                  <span className="font-bold w-20">월요일</span>
+                  <span className="font-bold w-16 md:w-20">월요일</span>
                   <span className="text-slate-500">상가 휴무</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="font-bold w-20">화-금</span>
-                  <span className="text-slate-500">(5시오픈) : 오후4시30분 - 11시</span>
-                  <span className="text-red-600 font-bold bg-red-50 px-2 py-0.5 rounded text-xs">이용불가</span>
+                <li className="flex items-start md:items-center gap-2">
+                  <span className="font-bold w-16 md:w-20 shrink-0">화-금</span>
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <span className="text-slate-500">(5시오픈) : 오후4시30분 - 11시</span>
+                    <span className="text-red-600 font-bold bg-red-50 px-1.5 py-0.5 rounded text-[10px] md:text-xs">이용불가</span>
+                  </div>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="font-bold w-20">토요일</span>
-                  <span className="text-slate-500">(1시오픈) : 00시30분 - 오전11시</span>
-                  <span className="text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded text-xs">이용가능</span>
+                <li className="flex items-start md:items-center gap-2">
+                  <span className="font-bold w-16 md:w-20 shrink-0">토요일</span>
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <span className="text-slate-500">(1시오픈) : 00시30분 - 오전11시</span>
+                    <span className="text-blue-600 font-bold bg-blue-50 px-1.5 py-0.5 rounded text-[10px] md:text-xs">이용가능</span>
+                  </div>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="font-bold w-20">일요일</span>
-                  <span className="text-slate-500">(2시오픈) : 오후 1시30분 - 오후8시</span>
-                  <span className="text-red-600 font-bold bg-red-50 px-2 py-0.5 rounded text-xs">이용불가</span>
+                <li className="flex items-start md:items-center gap-2">
+                  <span className="font-bold w-16 md:w-20 shrink-0">일요일</span>
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <span className="text-slate-500">(2시오픈) : 오후 1시30분 - 오후8시</span>
+                    <span className="text-red-600 font-bold bg-red-50 px-1.5 py-0.5 rounded text-[10px] md:text-xs">이용불가</span>
+                  </div>
                 </li>
               </ul>
             </div>
           </div>
         </div>
 
-        <div className="pt-4 border-t border-slate-100 space-y-2 text-xs md:text-sm text-slate-500 italic">
+        <div className="pt-3 md:pt-4 border-t border-slate-100 space-y-1.5 text-[10px] md:text-sm text-slate-500 italic">
           <p>* 주차 엘리베이터 외부 주차장은 모두 상가주차장입니다.</p>
           <p>* 당근슈퍼 주차장은 사장님의 배려로 이용 가능한 것이니 이용 가능 시간 외 주차 하지 말아주시기 바랍니다.</p>
         </div>
