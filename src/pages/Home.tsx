@@ -177,8 +177,9 @@ export default function Home({ records }: HomeProps) {
         </div>
 
         <div className="pt-4 border-t border-slate-100 space-y-2 text-sm text-slate-500 italic">
-          <p>* 주차 엘리베이터 외부 주차장은 모두 상가주차장입니다.</p>
+          <p>* 주차 엘리베이터 외부 주차장은 상가주차장입니다.</p>
           <p>* 당근슈퍼 주차장은 사장님의 배려로 이용 가능한 것이니 이용 가능 시간 외 주차 하지 말아주시기 바랍니다.</p>
+          
         </div>
       </section>
     </div>
