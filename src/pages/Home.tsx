@@ -142,7 +142,7 @@ export default function Home({ records }: HomeProps) {
                 벽쪽 : 지하상가 전용주차장
               </p>
               <p className="text-slate-600 pl-4 underline decoration-blue-200 underline-offset-4">
-                지하 상가 운영 안함. 입주민 임시로만 이용 가능. 6시간 이상 주차 불가 
+                지하 상가 운영 안함. 입주민 임시로 이용 가능
               </p>
             </div>
 
@@ -177,9 +177,8 @@ export default function Home({ records }: HomeProps) {
         </div>
 
         <div className="pt-4 border-t border-slate-100 space-y-2 text-sm text-slate-500 italic">
-          <p>* 주차 엘리베이터 외부 주차장은 상가주차장입니다.</p>
+          <p>* 주차 엘리베이터 외부 주차장은 모두 상가주차장입니다.</p>
           <p>* 당근슈퍼 주차장은 사장님의 배려로 이용 가능한 것이니 이용 가능 시간 외 주차 하지 말아주시기 바랍니다.</p>
-          
         </div>
       </section>
     </div>

@@ -1,6 +1,6 @@
 {
-  "name": "NS파크 아파트 주차관리",
-  "description": "NS파크 아파트 주차관리",
+  "name": "NSPark 아파트 주차번호 관리",
+  "description": "NSPark 아파트의 주차 차량 번호와 주차 안내 사항을 관리하고 검색하는 서비스입니다.",
   "requestFramePermissions": [],
   "majorCapabilities": []
 }
