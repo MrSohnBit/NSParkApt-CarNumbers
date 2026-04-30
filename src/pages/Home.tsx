@@ -53,7 +53,7 @@ export default function Home({ records }: HomeProps) {
             <input 
               type="text"
               placeholder="호수 또는 차량번호를 입력하세요..."
-              className="w-full pl-14 pr-4 py-5 bg-white border border-slate-200 rounded-2xl shadow-sm focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none text-lg font-medium"
+              className="w-full pl-14 pr-4 py-5 bg-white border border-slate-200 rounded-2xl shadow-sm focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none text-base md:text-lg font-medium"
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
             />
@@ -64,9 +64,9 @@ export default function Home({ records }: HomeProps) {
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider w-[20%]">호수</th>
-                  <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider w-[40%]">차량번호 1</th>
-                  <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider w-[40%]">차량번호 2</th>
+                  <th className="px-6 py-4 text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-wider w-[20%]">호수</th>
+                  <th className="px-6 py-4 text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-wider w-[40%]">차량번호 1</th>
+                  <th className="px-6 py-4 text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-wider w-[40%]">차량번호 2</th>
                 </tr>
               </thead>
             </table>
@@ -89,23 +89,27 @@ export default function Home({ records }: HomeProps) {
                         "hover:bg-slate-50/50"
                       }`}
                     >
-                      <td className="px-6 py-4 font-bold text-slate-700 w-[20%]">
+                      <td className="px-6 py-4 font-bold text-sm md:text-base text-slate-700 w-[20%]">
                         {highlightText(record.aptNo, searchQuery)}
                       </td>
-                      <td className="px-6 py-4 w-[40%]">
+                      <td className="px-6 py-4 w-[40%] text-sm md:text-base">
                         <div className="flex items-center gap-2">
-                          {highlightText(record.mainNo, searchQuery)}
-                          {record.isSuv1 && (
-                            <span className="bg-slate-800 text-white text-[10px] px-1.5 py-0.5 rounded font-bold tracking-tighter">SUV</span>
-                          )}
+                          <div className="relative inline-flex items-center">
+                            {record.isSuv1 && (
+                              <span className="absolute -top-1 -left-4 text-[9px] font-bold text-red-500 pointer-events-none">SUV</span>
+                            )}
+                            {highlightText(record.mainNo, searchQuery)}
+                          </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 w-[40%]">
+                      <td className="px-6 py-4 w-[40%] text-sm md:text-base">
                         <div className="flex items-center gap-2">
-                          {highlightText(record.subNo, searchQuery)}
-                          {record.isSuv2 && (
-                            <span className="bg-slate-800 text-white text-[10px] px-1.5 py-0.5 rounded font-bold tracking-tighter">SUV</span>
-                          )}
+                          <div className="relative inline-flex items-center">
+                            {record.isSuv2 && (
+                              <span className="absolute -top-1 -left-4 text-[9px] font-bold text-red-500 pointer-events-none">SUV</span>
+                            )}
+                            {highlightText(record.subNo, searchQuery)}
+                          </div>
                         </div>
                       </td>
                     </motion.tr>
@@ -126,32 +130,32 @@ export default function Home({ records }: HomeProps) {
       {/* Info Section */}
       <section className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm space-y-6">
         <div className="space-y-2">
-          <p className="text-lg font-bold text-slate-800">- 주차는 세대당 1대만 가능</p>
+          <p className="text-base md:text-lg font-bold text-slate-800">- 주차는 세대당 1대만 가능</p>
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+          <h3 className="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2">
             <Info className="text-blue-600" size={24} />
             기계식 주차장 외부 1층 주차장 이용 안내
           </h3>
           
           <div className="grid grid-cols-1 gap-6">
             <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
-              <p className="text-lg font-bold text-slate-800 mb-2 flex items-center gap-2">
+              <p className="text-base md:text-lg font-bold text-slate-800 mb-2 flex items-center gap-2">
                 <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                 벽쪽 : 지하상가 전용주차장
               </p>
-              <p className="text-slate-600 pl-4 underline decoration-blue-200 underline-offset-4">
+              <p className="text-sm md:text-base text-slate-600 pl-4 underline decoration-blue-200 underline-offset-4">
                 지하 상가 운영 안함. 입주민 임시로 이용 가능
               </p>
             </div>
 
             <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
-              <p className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+              <p className="text-base md:text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
                 <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                 가운데 (당근슈퍼 전용 주차장)
               </p>
-              <ul className="space-y-3 pl-4">
+              <ul className="space-y-3 pl-4 text-sm md:text-base">
                 <li className="flex items-center gap-2">
                   <span className="font-bold w-20">월요일</span>
                   <span className="text-slate-500">상가 휴무</span>
@@ -176,7 +180,7 @@ export default function Home({ records }: HomeProps) {
           </div>
         </div>
 
-        <div className="pt-4 border-t border-slate-100 space-y-2 text-sm text-slate-500 italic">
+        <div className="pt-4 border-t border-slate-100 space-y-2 text-xs md:text-sm text-slate-500 italic">
           <p>* 주차 엘리베이터 외부 주차장은 모두 상가주차장입니다.</p>
           <p>* 당근슈퍼 주차장은 사장님의 배려로 이용 가능한 것이니 이용 가능 시간 외 주차 하지 말아주시기 바랍니다.</p>
         </div>

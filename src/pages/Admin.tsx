@@ -109,18 +109,18 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
       <section className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
         <div className="flex items-center gap-2 mb-6">
           <Plus className="text-blue-600" size={20} />
-          <h2 className="text-lg font-bold">{isEditing ? "정보 수정" : "새 차량 등록"}</h2>
+          <h2 className="text-base md:text-lg font-bold">{isEditing ? "정보 수정" : "새 차량 등록"}</h2>
         </div>
         
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="space-y-1">
-            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">아파트 호수</label>
+            <label className="text-[10px] md:text-xs font-semibold text-slate-500 uppercase tracking-wider">아파트 호수</label>
             <div className="relative">
               <HomeIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
               <input 
                 type="text"
                 placeholder="예: 101"
-                className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none"
+                className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none text-sm md:text-base"
                 value={formData.aptNo}
                 onChange={e => setFormData({...formData, aptNo: e.target.value})}
                 disabled={!!isEditing}
@@ -128,18 +128,18 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
             </div>
           </div>
           <div className="space-y-1">
-            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">차량번호 1</label>
+            <label className="text-[10px] md:text-xs font-semibold text-slate-500 uppercase tracking-wider">차량번호 1</label>
             <div className="relative">
               <Car className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
               <input 
                 type="text"
                 placeholder="예: 12가3456"
-                className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none"
+                className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none text-sm md:text-base"
                 value={formData.mainNo}
                 onChange={e => setFormData({...formData, mainNo: e.target.value})}
               />
             </div>
-            <label className="flex items-center gap-2 text-xs text-slate-600 cursor-pointer select-none mt-1">
+            <label className="flex items-center gap-2 text-[10px] md:text-xs text-slate-600 cursor-pointer select-none mt-1">
               <input 
                 type="checkbox" 
                 checked={formData.isSuv1}
@@ -150,15 +150,15 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
             </label>
           </div>
           <div className="space-y-1">
-            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">차량번호 2 / 메모</label>
+            <label className="text-[10px] md:text-xs font-semibold text-slate-500 uppercase tracking-wider">차량번호 2 / 메모</label>
             <input 
               type="text"
               placeholder="예: 78나9012"
-              className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none"
+              className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none text-sm md:text-base"
               value={formData.subNo}
               onChange={e => setFormData({...formData, subNo: e.target.value})}
             />
-            <label className="flex items-center gap-2 text-xs text-slate-600 cursor-pointer select-none mt-1">
+            <label className="flex items-center gap-2 text-[10px] md:text-xs text-slate-600 cursor-pointer select-none mt-1">
               <input 
                 type="checkbox" 
                 checked={formData.isSuv2}
@@ -200,7 +200,7 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
             <input 
               type="text"
               placeholder="호수 또는 차량번호를 입력하세요..."
-              className="w-full pl-14 pr-4 py-5 bg-white border border-slate-200 rounded-2xl shadow-sm focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none text-lg font-medium"
+              className="w-full pl-14 pr-4 py-5 bg-white border border-slate-200 rounded-2xl shadow-sm focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none text-base md:text-lg font-medium"
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
             />
@@ -211,10 +211,10 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="px-6 py-4 text-xs font-bold text-slate-500 w-[15%]">호수</th>
-                  <th className="px-6 py-4 text-xs font-bold text-slate-500 w-[30%]">차량번호 1</th>
-                  <th className="px-6 py-4 text-xs font-bold text-slate-500 w-[35%]">차량번호 2 / 메모</th>
-                  <th className="px-6 py-4 text-xs font-bold text-slate-500 w-[20%] text-right">관리</th>
+                  <th className="px-6 py-4 text-[10px] md:text-xs font-bold text-slate-500 w-[15%]">호수</th>
+                  <th className="px-6 py-4 text-[10px] md:text-xs font-bold text-slate-500 w-[30%]">차량번호 1</th>
+                  <th className="px-6 py-4 text-[10px] md:text-xs font-bold text-slate-500 w-[35%]">차량번호 2 / 메모</th>
+                  <th className="px-6 py-4 text-[10px] md:text-xs font-bold text-slate-500 w-[20%] text-right">관리</th>
                 </tr>
               </thead>
             </table>
@@ -233,7 +233,7 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
                       key={record.aptNo}
                       className="hover:bg-slate-50/50 transition-colors group"
                     >
-                      <td className="px-6 py-4 font-bold text-slate-700 w-[15%]">
+                      <td className="px-6 py-4 font-bold text-sm md:text-base text-slate-700 w-[15%]">
                         <button 
                           onClick={() => handleEdit(record)}
                           className="hover:text-blue-600 hover:underline transition-colors"
@@ -241,23 +241,27 @@ export default function Admin({ records, isAdmin, onSuccess, onError }: AdminPro
                           {record.aptNo}
                         </button>
                       </td>
-                      <td className="px-6 py-4 w-[30%]">
+                      <td className="px-6 py-4 w-[30%] text-sm md:text-base">
                         <div className="flex items-center gap-2">
-                          {record.mainNo}
-                          {record.isSuv1 && (
-                            <span className="bg-slate-800 text-white text-[10px] px-1.5 py-0.5 rounded font-bold tracking-tighter">SUV</span>
-                          )}
+                          <div className="relative inline-flex items-center">
+                            {record.isSuv1 && (
+                              <span className="absolute -top-1 -left-4 text-[9px] font-bold text-red-500 pointer-events-none">SUV</span>
+                            )}
+                            {record.mainNo}
+                          </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 w-[35%]">
+                      <td className="px-6 py-4 w-[35%] text-sm md:text-base">
                         <div className="flex items-center gap-2">
-                          {record.subNo}
-                          {record.isSuv2 && (
-                            <span className="bg-slate-800 text-white text-[10px] px-1.5 py-0.5 rounded font-bold tracking-tighter">SUV</span>
-                          )}
+                          <div className="relative inline-flex items-center">
+                            {record.isSuv2 && (
+                              <span className="absolute -top-1 -left-4 text-[9px] font-bold text-red-500 pointer-events-none">SUV</span>
+                            )}
+                            {record.subNo}
+                          </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-right w-[20%]">
+                      <td className="px-6 py-4 text-right w-[20%] text-sm md:text-base">
                         <div className="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                           <button 
                             onClick={() => handleEdit(record)}
